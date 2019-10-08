@@ -2,9 +2,9 @@
     <div class="v-align">
         <v-layout row wrap align-center justify-center>
             <v-flex xs10 lg6 md8 order-lg2>
-                <div>
-                    <img src="logo.png" width="200px"/>
-                </div>
+<!--                <div>-->
+<!--                    <img src="logo.png" width="200px"/>-->
+<!--                </div>-->
                 <v-form ref="form" lazy-validation>
                     <div class="text-field-padding">
                         <v-text-field outline v-model="email" label="E-mail" :rules="[rules.required]" v-on:keyup.enter="login"/>

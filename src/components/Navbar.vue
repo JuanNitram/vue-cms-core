@@ -1,6 +1,9 @@
 <template>
   <v-toolbar>
-    <img :src="this.appUrl + 'logo-min.png'" class="sidebar-img" width="40" height="40" @click="showSideBar">
+<!--    <img class="sidebar-img" width="40" height="40" @click="showSideBar">-->
+<!--    <v-btn icon>-->
+      <v-icon @click="showSideBar">menu_open</v-icon>
+<!--    </v-btn>-->
     <v-toolbar-title>{{ this.$route.meta.title }}</v-toolbar-title>
     <v-spacer></v-spacer>
     <v-avatar class="pr-4" size="20" color="grey lighten-4">
@@ -13,7 +16,8 @@
       </v-btn>
       <v-list>
         <v-list-tile class="tile" @click="configuration">
-          <v-list-tile-title>Configuracion
+          <v-list-tile-title>
+            Configuracion
             <v-icon>build</v-icon>
           </v-list-tile-title>
         </v-list-tile>

@@ -2,7 +2,7 @@
     <v-navigation-drawer v-model="drawer" absolute temporary persistent>
         <v-list class="pa-1">
             <v-list-tile avatar>
-                <img :src="appUrl + 'logo-min.png'" width="40" height="40">
+<!--                <img width="40" height="40">-->
                 <div class="v-toolbar__title">
                     <v-list-tile-content>
                         <v-list-tile-title class="title">{{ $route.meta.title }}</v-list-tile-title>
