@@ -1,95 +1,67 @@
 <template>
-    <div v-show="!loading">
-        <v-layout row>
-            <v-flex xs12>
-                <div class="text-xs-left">
+    <v-container v-show="!loading">
+        <v-row pa-5>
+            <v-col cols="12">
+                <div class="text-left">
                     <v-btn color="primary" dark medium icon flat @click="goBack">
                         <v-icon>arrow_back</v-icon>
                     </v-btn>
                     <v-btn v-if='$route.name == "new-product"' color="primary" dark medium icon flat @click="save">
-                        <v-icon>
-                            done
-                        </v-icon>
+                        <v-icon>done</v-icon>
                     </v-btn>
                     <v-btn v-else @click="update"  color="primary" dark medium icon flat>
-                        <v-icon>
-                            done
-                        </v-icon>
+                        <v-icon>done</v-icon>
                     </v-btn>
                 </div>
-            </v-flex>
-        </v-layout>
-        <v-layout row wrap>
-            <v-flex d-flex xs12 sm12 md8 lg7 pa-4>
-                <v-layout column>
-                    <v-form ref="form">
-                        <v-layout row>
-                            <v-flex xs12>
-                                <v-layout column>
-                                    <v-text-field label="Name" data-vv-name="name" v-model="product.name" outline :rules="rules.name" />
-                                </v-layout>
-                            </v-flex>
-                        </v-layout>
+            </v-col>
+        </v-row>
+        <v-row pa-5>
+            <v-col cols="12" lg="8" md="8" sm="12" xs="12">
+                <v-form ref="form">
+                    <v-layout>
+                        <v-text-field label="Name" data-vv-name="name" v-model="product.name" outlined :rules="rules.name" />
+                    </v-layout>
 
-                        <v-layout row>
-                            <v-flex xs12>
-                                <v-layout column>
-                                    <v-textarea  label="Description" data-vv-name="description" v-model="product.description" outline :rules="rules.description" />
-                                </v-layout>
-                            </v-flex>
-                        </v-layout>
+                    <v-layout>
+                        <v-textarea  label="Description" data-vv-name="description" v-model="product.description" outlined :rules="rules.description" />
+                    </v-layout>
 
-                        <v-layout row pb-4>
-                            <v-flex xs12>
-                                <v-layout column>
-                                    <quill-editor v-if="renderComponents" ref="myTextEditor" v-model="quill.content" :options="quill.editorOption"
-                                        @change="onEditorChange($event)" @ready="onEditorReady($event)"/>
-                                </v-layout>
-                            </v-flex>
-                        </v-layout>
+                    <v-layout pb-7>
+                        <quill-editor v-if="renderComponents" ref="myTextEditor" v-model="quill.content" :options="quill.editorOption"
+                            @change="onEditorChange($event)" @ready="onEditorReady($event)"/>
+                    </v-layout>
 
-                        <v-layout row>
-                            <v-flex xs12>
-                                <v-layout column>
-                                    <SelectSimple v-if="renderComponents" ref="category" :label="'Category'" :url="categoriesUrl"
-                                        :section="'categories'" :selectedItem="product.categories_id" :required="true"/>
-                                </v-layout>
-                            </v-flex>
-                        </v-layout>
+                    <v-layout>
+                        <SelectSimple v-if="renderComponents" ref="category" :label="'Category'" :url="categoriesUrl"
+                            :section="'categories'" :selectedItem="product.categories_id" :required="true"/>
+                    </v-layout>
 
-                        <v-layout row>
-                            <v-flex xs12>
-                                <v-layout column>
-                                    <SelectMultiple v-if="renderComponents" ref="subcategories" :parentSelected="product.categories_id"
-                                        :listen="'categories'" :listenUrl="subcategoriesUrl" :label="'Subcategory'"
-                                        :url="subcategoriesUrl" :section="'subcategories'" :itemsSelected="product.subcategories"/>
-                                </v-layout>
-                            </v-flex>
-                        </v-layout>
+                    <v-layout>
+                        <SelectMultiple v-if="renderComponents" ref="subcategories" :parentSelected="product.categories_id"
+                            :listen="'categories'" :listenUrl="subcategoriesUrl" :label="'Subcategory'"
+                            :url="subcategoriesUrl" :section="'subcategories'" :itemsSelected="product.subcategories"/>
+                    </v-layout>
 
-                        <v-layout row>
-                            <v-flex xs4>
-                                <v-layout column>
-                                    <v-checkbox label="Active" data-vv-name="active" type="checkbox" v-model="product.active" />
-                                </v-layout>
-                            </v-flex>
+                    <v-layout>
+                        <v-flex xs4>
+                            <v-layout column>
+                                <v-switch v-model="product.active" data-vv-name="active" label="Active"/>
+                            </v-layout>
+                        </v-flex>
 
-                            <v-flex xs4>
-                                <v-layout column>
-                                    <v-checkbox label="Highlighted" data-vv-name="highlighted" type="checkbox" v-model="product.highlighted" />
-                                </v-layout>
-                            </v-flex>
-                        </v-layout>
-                    </v-form>
-                </v-layout>
-            </v-flex>
-            <v-flex d-flex xs12 sm12 md4 lg5 pa-4>
-                <v-layout column>
-                    <MediasManager v-if="renderComponents" ref="medias" :label="'Medias'" :limit="2" :existingMedia="product.medias.medias ? product.medias.medias.thumb : []"/>
-                </v-layout>
-            </v-flex>
-        </v-layout>
-    </div>
+                        <v-flex xs4>
+                            <v-layout column>
+                                <v-switch v-model="product.highlighted" data-vv-name="highlighted" label="Highlighted"/>
+                            </v-layout>
+                        </v-flex>
+                    </v-layout>
+                </v-form>
+            </v-col>
+            <v-col cols="12" lg="4" md="4" sm="12" xs="12">
+                <MediasManager v-if="renderComponents" ref="medias" :label="'Medias'" :limit="2" :existingMedia="product.medias.medias ? product.medias.medias.thumb : []"/>
+            </v-col>
+        </v-row>
+    </v-container>
 </template>
 
 <script>
@@ -290,13 +262,13 @@ export default{
 
 <style>
     .quill-editor {
-        border: 2px solid rgba(0,0,0,.54);
+        border: 1px solid rgba(0,0,0,.35);
         border-radius: 4px;
     }
 
     .ql-container {
         border-top: 2px solid rgba(0,0,0,.54);
         border-radius: 0px;
-        height: 14vh!important;
+        height: 30vh!important;
     }
 </style>

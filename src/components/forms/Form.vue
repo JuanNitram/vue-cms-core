@@ -1,9 +1,5 @@
 <template>
-    <v-layout row>
-        <v-flex xs12>
-            <component :is="component"/>
-        </v-flex>
-    </v-layout>
+    <component :is="component"/>
 </template>
 
 <script>

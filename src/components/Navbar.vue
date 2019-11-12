@@ -1,90 +1,31 @@
 <template>
-  <v-toolbar>
-<!--    <img class="sidebar-img" width="40" height="40" @click="showSideBar">-->
-<!--    <v-btn icon>-->
-      <v-icon @click="showSideBar">menu_open</v-icon>
-<!--    </v-btn>-->
-    <v-toolbar-title>{{ this.$route.meta.title }}</v-toolbar-title>
-    <v-spacer></v-spacer>
-    <v-avatar class="pr-4" size="20" color="grey lighten-4">
-      <img :src="this.appUrl + 'account_circle_black.png'" alt="avatar">
-    </v-avatar>
-    <strong>{{ adminName }}</strong>
-    <v-menu bottom left>
-      <v-btn slot="activator" icon>
-        <v-icon>expand_more</v-icon>
-      </v-btn>
-      <v-list>
-        <v-list-tile class="tile" @click="configuration">
-          <v-list-tile-title>
-            Configuracion
-            <v-icon>build</v-icon>
-          </v-list-tile-title>
-        </v-list-tile>
-        <v-list-tile class="tile" @click="logout">
-          <v-list-tile-title>Logout
-            <v-icon>exit_to_app</v-icon>
-          </v-list-tile-title>
-        </v-list-tile>
-      </v-list>
-    </v-menu>
-  </v-toolbar>
+  <v-app-bar app clipped-left>
+    <v-app-bar-nav-icon @click.stop="showSideBar">
+      <v-icon>mdi-menu</v-icon>
+    </v-app-bar-nav-icon>
+    <v-toolbar-title>{{ $route.meta.title }}</v-toolbar-title>
+    <v-progress-linear :active="loading === true" :indeterminate="true" absolute bottom></v-progress-linear>
+  </v-app-bar>
 </template>
 
 <script>
-import eventBus from "../EventBus.js";
+  import eventBus from "../EventBus.js";
 
-export default {
-  methods: {
-    logout: function() {
-      this.$store.dispatch("logout").then(() => {
-        this.$router.push("/login");
-      });
+  export default {
+    methods: {
+      logout: function() {
+        this.$store.dispatch("logout").then(() => {
+          this.$router.push("/login");
+        });
+      },
+      showSideBar(){
+        eventBus.$emit("show-side-bar");
+      }
     },
-    configuration() {},
-    showSideBar: () => {
-      eventBus.$emit("show-side-bar");
+
+    computed: {
+      user(){ return this.$store.getters.user },
+      loading(){ return this.$store.getters.loading }
     }
-  },
-  computed: {
-    appUrl(){ return this.$store.state.appUrl },
-    adminName(){ return this.$store.state.user.name },
-  }
-};
+  };
 </script>
-<style>
-.tile .v-list__tile {
-    height: 48px;
-    margin: 3px!important;
-    border-radius: 4px;
-    color:#2c3e50!important
-}
-
-.tile .tile-active {
-    color:#f5f5f5!important;
-    background: #2c3e50;
-}
-
-.tile .v-list__tile:hover {
-    background: #2c3e50!important;
-    color: #f5f5f5!important;
-    transition: background-color 100ms linear;
-}
-
-.tile .v-icon{
-    color: inherit!important;
-    transition: background-color 100ms linear;
-}
-
-.v-toolbar__content {
-  color:#2c3e50!important
-}
-
-.sidebar-img:hover {
-  transform: scale(1.15, 1.15);
-}
-
-.sidebar-img {
-  transition: all 0.5s;
-}
-</style>

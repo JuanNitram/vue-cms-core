@@ -1,34 +1,23 @@
 <template>
     <div id="app">
-        <v-app>
-            <div v-if="!$route.meta.isLogin">
-                <Navbar v-if="checked"/>
+        <v-app id="inspire">
+            <template v-if="!$route.meta.isLogin && checked === true">
                 <Sidebar/>
-            </div>
+                <Navbar/>
+            </template>
 
-            <v-container v-if="checked" fluid>
-                <v-layout row wrap>
-                    <v-flex xs12>
-                        <transition name="fade" mode="out-in">
-                            <router-view/>
-                        </transition>
-                    </v-flex>
-                </v-layout>
-            </v-container>
-
-            <v-container fluid>
-                <v-progress-circular v-show="loading" class="progress-fix" size="70" width="7" indeterminate/>
-            </v-container>
-
-            <v-footer class="pa-3" height="8vh">
-                <v-spacer></v-spacer>
-                <v-flex py-3 text-xs-center xs12>
-                    <div>&copy; {{ new Date().getFullYear() }} - <strong>Sideral</strong></div>
-                </v-flex>
-            </v-footer>
-
+            <v-content>
+                <v-container v-if="checked === true" fluid fill-height>
+                    <v-layout justify-center>
+                        <v-flex>
+                            <transition name="fade" mode="out-in">
+                                <router-view/>
+                            </transition>
+                        </v-flex>
+                    </v-layout>
+                </v-container>
+            </v-content>
         </v-app>
-        
     </div>
 </template>
 

@@ -4,42 +4,42 @@
             <div class="text-sm-left text-xs-left">
 
                 <v-tooltip bottom>
-                    <v-btn color="primary" class="caption" dark medium icon flat @click="goBack" slot="activator" >
+                    <v-btn color="primary" class="caption" dark medium icon text @click="goBack" slot="activator" >
                         <v-icon class="fix-padding-btn">arrow_back</v-icon>
                     </v-btn>
                     Back
                 </v-tooltip>
 
                 <v-tooltip bottom>
-                    <v-btn v-if="!this.addDisabled" color="primary" class="caption" dark medium icon flat @click="formNew" slot="activator">
+                    <v-btn v-if="!this.addDisabled" color="primary" class="caption" dark medium icon text @click="formNew" slot="activator">
                         <v-icon class="fix-padding-btn">add</v-icon>
                     </v-btn>
                     Add New
                 </v-tooltip>
                    
                 <v-tooltip bottom>
-                    <v-btn v-if="this.orderChanged" color="primary" class="caption" dark medium icon flat @click="saveOrder" slot="activator">
+                    <v-btn v-if="this.orderChanged" color="primary" class="caption" dark medium icon text @click="saveOrder" slot="activator">
                         <v-icon class="fix-padding-btn">reorder</v-icon>
                     </v-btn>
                     Save Order
                 </v-tooltip>
 
                 <v-tooltip bottom>
-                    <v-btn v-if="this.activeMany" color="primary" class="caption" dark medium icon flat @click="applyActiveMany" slot="activator">
+                    <v-btn v-if="this.activeMany" color="primary" class="caption" dark medium icon text @click="applyActiveMany" slot="activator">
                         <v-icon class="fix-padding-btn">check</v-icon>
                     </v-btn>        
                     Active Selected
                 </v-tooltip>
 
                 <v-tooltip bottom>
-                    <v-btn v-if="this.disableMany" color="primary" class="caption" dark medium icon flat @click="applyDisableMany" slot="activator">
+                    <v-btn v-if="this.disableMany" color="primary" class="caption" dark medium icon text @click="applyDisableMany" slot="activator">
                         <v-icon class="fix-padding-btn">close</v-icon>
                     </v-btn>
                     Disable Selected
                 </v-tooltip>
                 
                 <v-tooltip bottom>
-                    <v-btn v-if="this.removeMany" color="primary" class="caption" dark medium icon flat @click="applyRemoveMany" slot="activator">
+                    <v-btn v-if="this.removeMany" color="primary" class="caption" dark medium icon text @click="applyRemoveMany" slot="activator">
                         <v-icon class="fix-padding-btn">delete</v-icon>
                     </v-btn>
                     Remove Selected

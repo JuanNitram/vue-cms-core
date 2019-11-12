@@ -1,5 +1,6 @@
 <template>
-        <v-select :rules="required ? ruleRequired : undefined" ref="select" @change="selectChanged" v-model="selected" :items="items" item-text="name" item-value="id" :label="this.label" box outline/>
+        <v-select :rules="required ? ruleRequired : undefined" ref="select" @change="selectChanged" v-model="selected" :items="items"
+                item-text="name" item-value="id" :label="this.label" box outlined/>
 </template>
 
 <script>

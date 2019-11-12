@@ -1,6 +1,6 @@
 <template>
     <v-select @change="selectChanged" v-model="selected" :items="items" item-text="name"
-        item-value="id" :label="this.label" box chips multiple outline/>
+        item-value="id" :label="this.label" box chips multiple outlined/>
 </template>
 
 <script>
