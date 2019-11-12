@@ -82,7 +82,7 @@ export default{
         });
 
         eventBus.$once('elem-fetched', (data) => {
-            this.section = data.section;
+            this.section = data.store;
             this.$store.commit('SET_LOADING', false);
         });
         if(this.$route.params.id){

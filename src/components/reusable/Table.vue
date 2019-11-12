@@ -4,7 +4,7 @@
 
     <v-data-table v-model="selected" :items="items" :headers="headers" :page.sync="page" :items-per-page="perPage"
         class="elevation-1" hide-default-footer :options.sync="options" :loading="loading"
-        show-select>
+        show-select item-key="id">
 
       <template v-slot:item.thumb="{ item }">
         <v-img :src="item.thumb.full_url" aspect-ratio="1"

@@ -25,7 +25,7 @@ export default{
     },
     data(){
         return {
-            section: this.$router.currentRoute.meta.section,
+            section: this.$router.currentRoute.meta.store,
         }
     },
     created(){
@@ -132,7 +132,7 @@ export default{
         },
     },
     computed: {
-        url(){ return this.$store.state.baseUrl + this.$router.currentRoute.meta.section + '/' },
+        url(){ return this.$store.state.baseUrl + this.$router.currentRoute.meta.store + '/' },
     }
 }
 </script>

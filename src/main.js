@@ -5,7 +5,7 @@ import Toasted from 'vue-toasted';
 import VueQuillEditor from 'vue-quill-editor'
 
 import App from "./App.vue"
-import store from "./store"
+import store from "./store/index"
 import filters from "./filters"
 import router from "./routes/index"
 
