@@ -14,7 +14,13 @@ for (let name in filters) {
   Vue.filter(name, filters[name]);
 }
 
-Vue.use(Toasted);
+Vue.use(Toasted, {
+  theme: "bubble",
+  type: 'error',
+  fitToScreen: true,
+  position: "top-right",
+  duration : 3000
+});
 Vue.use(VueQuillEditor);
 Vue.use(Vuetify, { theme: { primary: "#2c3e50" } });
 Vue.prototype.$http = Axios;

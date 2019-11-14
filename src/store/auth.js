@@ -20,7 +20,7 @@ const auth = {
   actions: {
     login: function ({commit}, user) {
       return new Promise((resolve, reject) => {
-        axios({url: this.state.apiUrl + 'login', data: user, method: 'POST'}).then(resp => {
+        axios({url: this.state.global.apiUrl + 'login', data: user, method: 'POST'}).then(resp => {
           if (resp.data.success) {
             const token = resp.data.data.token;
             const user = resp.data.data.admin;
