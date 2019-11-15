@@ -4,6 +4,10 @@
       <v-icon>mdi-menu</v-icon>
     </v-app-bar-nav-icon>
     <v-toolbar-title>{{ $route.meta.title }}</v-toolbar-title>
+    <v-spacer></v-spacer>
+    <v-btn icon>
+      <v-icon>mdi-logout</v-icon>
+    </v-btn>
     <v-progress-linear :active="loading === true" :indeterminate="true" absolute bottom></v-progress-linear>
   </v-app-bar>
 </template>
@@ -13,7 +17,7 @@
 
   export default {
     methods: {
-      logout: function() {
+      logout() {
         this.$store.dispatch("logout").then(() => {
           this.$router.push("/login");
         });

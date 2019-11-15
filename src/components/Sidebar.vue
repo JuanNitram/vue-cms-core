@@ -46,7 +46,7 @@ export default {
         return {
             drawer: null,
             items: [
-                { title: 'Dashboard', icon: 'dashboard' , link: '/dashboard' },
+                { title: 'Dashboard', icon: 'mdi-view-dashboard' , link: '/dashboard' },
             ],
         }
     },

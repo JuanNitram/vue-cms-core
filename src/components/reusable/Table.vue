@@ -88,6 +88,12 @@
       apiUrl(){
         return this.$store.getters.apiUrl + this.section;
       }
+    },
+
+    watch: {
+      page(){
+        this.fetch();
+      }
     }
   }
 </script>
