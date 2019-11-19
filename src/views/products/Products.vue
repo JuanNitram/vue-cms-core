@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Table from '../../components/reusable/Table'
+import Table from '../../components/reusable/table/Table'
 
 export default {
     components: {

@@ -16,7 +16,6 @@ for (let name in filters) {
 
 Vue.use(Toasted, {
   theme: "bubble",
-  type: 'error',
   fitToScreen: true,
   position: "top-right",
   duration : 3000
